@@ -1,0 +1,13 @@
+<div class="col-md-12 mt-5">
+  <form [formGroup]="loginForm" (submit)="authenticate()">
+    <div class="row form-group col-md-4">
+      <input id="userName" type="text" class="form-control" placeholder="User name" formControlName="userName">
+    </div>
+    <div class="row form-group col-md-4">
+      <input id="password" type="password" class="form-control" placeholder="Password" formControlName="password">
+    </div>
+    <div class="row form-group col-md-4 ">
+      <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid">Login</button>
+    </div>
+  </form>
+</div>

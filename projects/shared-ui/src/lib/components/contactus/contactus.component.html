@@ -1,0 +1,32 @@
+<div class="col-md-12">
+<div class="row p-md-5">
+  <div class="col-md-5">
+    <div class="row padding-5"><span>Call us on <b>019080 49964</b></span></div>
+    <div class="row padding-5"><span>Send email to <b>queries@mgtechno.co.uk</b></span></div>
+  </div>
+  <div class="col-md-4">
+    <form [formGroup]="contactusForm" class="padding-5 box-10 " (submit)="sendEmail()">
+
+      <div class="form-group mb-md-3">
+        <input id="name" type="text" class="form-control" formControlName="name" placeholder="Full name" required>
+      </div>
+      <div class="form-group mb-md-3">
+        <input id="destination" type="text" class="form-control" placeholder="E-Mail" formControlName="email" required>
+      </div>
+      <div class="mb-md-3 form-label-group">
+        <select id="queryType" type="text" class="form-control" formControlName="queryType" required>
+          <option value="General" selected>General</option>
+          <option value="Sales">Sales</option>
+          <option value="Technical">Technical</option>
+        </select>
+      </div>
+      <div class="form-label-group">
+        <textarea id="query" formControlName="query" class="form-control" placeholder="Type your query" required rows="5"></textarea>
+      </div>
+      <div class=" offset-4">
+        <button type="submit" class="btn btn-success" [disabled]="contactusForm.invalid">Send Query</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>

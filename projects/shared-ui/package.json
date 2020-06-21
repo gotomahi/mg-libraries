@@ -1,9 +1,13 @@
 {
   "name": "@gotomahi/shared-ui",
-  "publishConfig": {"registry": "https://npm.pkg.github.com/gotomahi"},
-  "version": "1.0.0",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/gotomahi"
+  },
+  "version": "1.2.1",
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
-    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "@ng-bootstrap/ng-bootstrap": "^2.0.0",
+    "@angular/forms": "6.0.2"
   }
 }
