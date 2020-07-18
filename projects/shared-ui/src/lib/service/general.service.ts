@@ -10,4 +10,8 @@ export class GeneralService {
 
   constructor(private http: HttpClient, private baseService: BaseService, private dataShareService: DataShareService) { }
 
+  public getFileContent(relativeFilePath: string, responseContentType: string): Observable<any> {
+    return this.http.get(relativeFilePath);
+  }
+
 }
