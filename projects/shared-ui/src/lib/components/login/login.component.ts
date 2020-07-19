@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Route} from '@angular/compiler/src/core';
 import {Router} from '@angular/router';
 
@@ -10,7 +10,7 @@ import {CustomerService} from '../../service/customer.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
+  selector: 'lib-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -19,8 +19,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router, private dataShareService: DataShareService,
               private generalService: GeneralService, private customerService: CustomerService,
-              private accountService: AccountService, private formBuilder: FormBuilder) { 
-
+              private accountService: AccountService, private formBuilder: FormBuilder) {
         this.loginForm = formBuilder.group({
           userName: new FormControl('', [Validators.required]),
           password: new FormControl('', [Validators.required])
@@ -31,8 +30,8 @@ export class LoginComponent implements OnInit {
   }
 
   authenticate(): void  {
-    this.userService.authenticate(this.dataShareService.token.getValue(), this.loginForm.value.userName, this.loginForm.value.password)
-    .subscribe( (result: any) => {
+    this.userService.authenticate(this.dataShareService.token.getValue(), this.loginForm.value.userName,
+      this.loginForm.value.password).subscribe( (result: any) => {
             if ( result.access_token ) {
               this.dataShareService.isUserLoggedIn.next(true);
               this.dataShareService.token.next(result);
@@ -40,13 +39,13 @@ export class LoginComponent implements OnInit {
                 this.dataShareService.customer.next(customer);
                 this.accountService.getAccount();
               });
-              this.router.navigate(['product'], {skipLocationChange: true});
+              this.router.navigate(['home'], {skipLocationChange: true});
             } else {
               console.log('failed to authenticate the user ' + result);
             }
           },
       (error) => {
-        this.loginForm.errors['submit']='Failed to authenticate'; }
+        this.loginForm.errors['submit'] = 'Failed to authenticate'; }
       );
   }
 
