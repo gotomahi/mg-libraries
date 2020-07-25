@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-dark navbar-fixed col-12">
+  <div class="navbar-header col-2">
+    <a class="navbar-brand" href="#">MG Techno Ltd</a>
+  </div>
+  <div class="navbar-collapse collapse col-md-10">
+    <ul class="navbar-nav" >
+      <li *ngFor="let m of header.menu">
+        <a *ngIf="m.menuSide === 'left' && (!m.allowedOnLogin || loggedIn)" [routerLink]="m.link"
+           class="nav-link" [skipLocationChange]="true" routerLinkActive="active">{{m.displayName}}</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav offset-md-4" >
+      <li *ngFor="let m of header.menu">
+        <a *ngIf="m.menuSide === 'right' && (!m.allowedOnLogin || loggedIn)" [routerLink]="m.link"
+           class="nav-link" [skipLocationChange]="true" routerLinkActive="active">{{m.displayName}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="navbar-collapse collapse col-10"><ul class="navbar-nav offset-5"><li>{{header.emailContact}}</li><li>
+    {{header.phoneContact}}</li></ul></div>
+</nav>
