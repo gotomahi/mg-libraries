@@ -11,7 +11,6 @@ import {Header} from '../../model/header';
 export class HeaderComponent implements OnInit {
   @Input()
   header: Header;
-  menu: Menu[];
   loggedIn: boolean;
 
   constructor(private dataShareService: DataShareService) {

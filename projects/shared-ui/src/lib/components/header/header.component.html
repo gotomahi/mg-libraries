@@ -5,13 +5,13 @@
   <div class="navbar-collapse collapse col-md-10">
     <ul class="navbar-nav" >
       <li *ngFor="let m of header.menu">
-        <a *ngIf="m.menuSide === 'left' && (!m.allowedOnLogin || loggedIn)" [routerLink]="m.link"
+        <a *ngIf="m.menuSide === 'left' && ((!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn))" [routerLink]="m.link"
            class="nav-link" [skipLocationChange]="true" routerLinkActive="active">{{m.displayName}}</a>
       </li>
     </ul>
     <ul class="navbar-nav offset-md-4" >
       <li *ngFor="let m of header.menu">
-        <a *ngIf="m.menuSide === 'right' && (!m.allowedOnLogin || loggedIn)" [routerLink]="m.link"
+        <a *ngIf="m.menuSide === 'right' && ((!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn))" [routerLink]="m.link"
            class="nav-link" [skipLocationChange]="true" routerLinkActive="active">{{m.displayName}}</a>
       </li>
     </ul>
