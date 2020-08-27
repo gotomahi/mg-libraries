@@ -4,7 +4,7 @@ import {ConfirmState} from './confirm-state';
 import {ConfirmOptions} from './confirm-options';
 
 @Component({
-  selector: 'app-confirm-dialog',
+  selector: 'lib-confirm-dialog',
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.scss']
 })
