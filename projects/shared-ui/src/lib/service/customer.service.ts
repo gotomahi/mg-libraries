@@ -12,14 +12,9 @@ export class CustomerService {
               private dataShareService: DataShareService) {
   }
 
-  findCustomers(firstName: string, lastName: string): Customer[] {
-    const customers: Customer[] = [];
-    this.http.post(this.baseService.environment.services.customer + '/all', {},
-      {headers: this.baseService.userHeaders()})
-      .subscribe(result => {
-        Object.assign(customers, result);
-      });
-    return customers;
+  findCustomers(): Observable<Customer[]> {
+    return this.http.get<Customer[]>(this.baseService.environment.services.customer + '/all',
+      {headers: this.baseService.userHeaders()});
   }
 
   getCustomerById(customerId: number): Observable<Customer> {
@@ -32,8 +27,13 @@ export class CustomerService {
       {headers: this.baseService.userHeaders()});
   }
 
-  saveCustomer(customer: any): Observable<any> {
+  registerCustomer(customer: any): Observable<any> {
     return this.http.post(this.baseService.environment.services.user, customer,
       {headers: this.baseService.anonymousHeaders()});
+  }
+
+  saveCustomer(customer: any): Observable<any> {
+    return this.http.post(this.baseService.environment.services.user, customer,
+      {headers: this.baseService.userHeaders()});
   }
 }
