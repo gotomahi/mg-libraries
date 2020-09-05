@@ -2,8 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {DataShareService, SharedUiModule} from 'shared-ui';
-import {Route, Router, RouterModule} from '@angular/router';
+import {
+  DataShareService,
+  SharedUiModule,
+  UserService,
+  BaseService,
+  GeneralService,
+  CustomerService,
+  AccountService
+} from 'shared-ui';
+import {Route, RouterModule} from '@angular/router';
 import { HeaderTestComponent } from './header-test/header-test.component';
 import {A11yModule} from '@angular/cdk/a11y';
 import {CdkTableModule} from '@angular/cdk/table';
@@ -44,7 +52,9 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FlexLayoutModule} from "@angular/flex-layout";
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {HttpClientModule} from '@angular/common/http';
+import {environment} from "../../../lending-ui/src/environments/environment";
 
 const routes: Route[] = [{path: 'home', component: AppComponent},
   {path: 'product', component: AppComponent}];
@@ -58,6 +68,7 @@ const routes: Route[] = [{path: 'home', component: AppComponent},
       SharedUiModule,
       RouterModule.forRoot(routes),
       BrowserAnimationsModule,
+      HttpClientModule,
       A11yModule,
       CdkStepperModule,
       CdkTableModule,
@@ -99,7 +110,8 @@ const routes: Route[] = [{path: 'home', component: AppComponent},
       MatTreeModule,
       FlexLayoutModule
     ],
-  providers: [DataShareService],
+  providers: [DataShareService, UserService, BaseService, GeneralService, CustomerService, AccountService,
+    {provide: 'environment', useValue: environment}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

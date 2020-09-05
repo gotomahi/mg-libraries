@@ -1,13 +1,19 @@
-<div class="col-md-12 login">
+<div class="login">
   <form [formGroup]="loginForm" (submit)="authenticate()">
-    <div class="row form-group col-md-4">
-      <input id="userName" type="text" class="form-control" placeholder="User name" formControlName="userName">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="userName">
+      </mat-form-field>
     </div>
-    <div class="row form-group col-md-4">
-      <input id="password" type="password" class="form-control" placeholder="Password" formControlName="password">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password">
+      </mat-form-field>
     </div>
-    <div class="row form-group col-md-4 ">
-      <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid">Login</button>
+    <div>
+      <button type="submit" class="mat-raised-button login-button" color="primary" [disabled]="loginForm.invalid">Login</button>
     </div>
   </form>
 </div>
