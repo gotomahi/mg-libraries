@@ -1,4 +1,5 @@
 $base-color: #5F9FD0;
+$header-font-color: #FFFFFF;
 
 body {
   font-family: Verdana Pro Regular !important;
@@ -129,3 +130,6 @@ div.card {
       }
     }
   }
+.menu-spacer{
+  flex: 1 1 auto;
+}
