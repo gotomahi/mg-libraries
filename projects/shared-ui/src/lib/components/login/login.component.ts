@@ -15,6 +15,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  hide = true;
   loginForm: FormGroup;
 
   constructor(private userService: UserService, private router: Router, private dataShareService: DataShareService,

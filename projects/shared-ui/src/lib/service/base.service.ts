@@ -5,7 +5,6 @@ import {DataShareService} from './data-share.service';
 
 @Injectable()
 export class BaseService {
-  
   public environment: any;
 
   constructor(private dataShareService: DataShareService, @Inject('environment') envConfig) {
@@ -28,5 +27,10 @@ export class BaseService {
   private headers(token: any): any {
     return {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.access_token};
   }
+  public xs(): boolean {return  window.innerWidth < 576; }
+  public sm(): boolean {return window.innerWidth >= 576 && window.innerWidth < 768; }
+  public md(): boolean {return window.innerWidth >= 768 && window.innerWidth < 992; }
+  public lg(): boolean {return window.innerWidth >= 992 && window.innerWidth < 1200; }
+  public xl(): boolean {return window.innerWidth >= 1200; }
 
 }

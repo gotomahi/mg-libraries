@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Header} from 'shared-ui';
+import {BaseService, Header} from 'shared-ui';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,9 @@ import {Header} from 'shared-ui';
 export class AppComponent implements OnInit{
   title = 'app';
   header: Header;
+
+  constructor(private baseService: BaseService) {
+  }
 
   ngOnInit(): void {
     this.header = {menu: [{displayName: 'Home', name:'Home', link: '/home', allowedOnLogin: false, skipLocationChange: true, menuSide: 'left'},

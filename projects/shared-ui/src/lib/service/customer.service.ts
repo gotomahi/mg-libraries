@@ -33,7 +33,7 @@ export class CustomerService {
   }
 
   saveCustomer(customer: any): Observable<any> {
-    return this.http.post(this.baseService.environment.services.user, customer,
+    return this.http.post(this.baseService.environment.services.customer, customer,
       {headers: this.baseService.userHeaders()});
   }
 }
