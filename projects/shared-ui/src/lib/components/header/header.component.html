@@ -13,15 +13,16 @@
            class="mat-menu-item" [skipLocationChange]="true" routerLinkActive="selected-menu-item">{{m.displayName}}</a>
       </span>
 </mat-toolbar>
-
+<div>
 <mat-sidenav-container fxFlexFill>
   <mat-sidenav #sidenav>
     <mat-nav-list>
       <span *ngFor="let m of header.menu">
-        <a *ngIf="(!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn)"
-                [routerLink]="m.link" class="mat-menu-item" [skipLocationChange]="true" routerLinkActive="active">{{m.displayName}}</a>
+        <a mat-list-item *ngIf="(!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn)"
+                [routerLink]="m.link" class="mat-nav-list-item" [skipLocationChange]="true" routerLinkActive="active">{{m.displayName}}</a>
       </span>
     </mat-nav-list>
   </mat-sidenav>
-  <!--<mat-sidenav-content fxFlexFill>Main content</mat-sidenav-content>-->
+  <mat-sidenav-content fxFlexFill></mat-sidenav-content>
 </mat-sidenav-container>
+</div>

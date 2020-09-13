@@ -20,8 +20,17 @@ $header-font-color: #FFFFFF;
   margin-left: 20px;
 }
 
+.mat-nav-list-item{
+  text-decoration: none;
+  padding: 5px;
+}
+
 .selected-menu-item, .mat-menu-item:hover{
   background-color: $header-font-color;
   color: $base-color;
+}
+
+.mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
+  height: 100vh !important;
 }
 
