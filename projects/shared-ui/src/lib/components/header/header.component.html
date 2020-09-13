@@ -23,6 +23,6 @@
       </span>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content fxFlexFill></mat-sidenav-content>
+  <mat-sidenav-content [ngClass]="sidenav.opened ? 'side-menu-content' : ''"></mat-sidenav-content>
 </mat-sidenav-container>
 </div>
