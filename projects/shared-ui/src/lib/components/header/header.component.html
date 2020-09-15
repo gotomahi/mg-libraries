@@ -15,7 +15,7 @@
 </mat-toolbar>
 <div>
 <mat-sidenav-container fxFlexFill>
-  <mat-sidenav #sidenav>
+  <mat-sidenav #sidenav mode="over" role="navigation">
     <mat-nav-list>
       <span *ngFor="let m of header.menu">
         <a mat-list-item *ngIf="(!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn)"
@@ -23,6 +23,8 @@
       </span>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content [ngClass]="sidenav.opened ? 'side-menu-content' : ''"></mat-sidenav-content>
+  <mat-sidenav-content [ngClass]="sidenav.opened ? 'side-menu-content' : ''">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>
 </div>
