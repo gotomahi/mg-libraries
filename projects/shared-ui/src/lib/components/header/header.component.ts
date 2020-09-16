@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   @Input()
   header: Header;
   loggedIn: boolean;
+  mobileMode: string;
 
   constructor(private dataShareService: DataShareService) {
     dataShareService.isUserLoggedIn.subscribe(value => this.loggedIn = value);
