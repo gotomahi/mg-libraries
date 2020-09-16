@@ -30,7 +30,9 @@ $header-font-color: #FFFFFF;
   color: $base-color;
 }
 
-.side-menu-content{
-  height: 100vh;
+.mat-drawer {
+  background-color: $header-font-color;
+  color: $base-color;
+  padding: 0 20px;
 }
 
