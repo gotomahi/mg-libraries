@@ -21,23 +21,25 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
-  imports: [
-    ReactiveFormsModule,
-    CommonModule,
-    RouterModule,
-    A11yModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatIconModule,
-    MatInputModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    FlexLayoutModule
-  ],
+    imports: [
+        ReactiveFormsModule,
+        CommonModule,
+        RouterModule,
+        A11yModule,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatIconModule,
+        MatInputModule,
+        MatMenuModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatListModule,
+        FlexLayoutModule,
+        MatSelectModule
+    ],
   declarations: [ConfirmComponent, ConfirmDialogComponent, ContactusComponent, FooterComponent, LoginComponent, LogoutComponent,
     SuccessComponent, PageNotFoundComponent, HeaderComponent],
   exports: [ConfirmComponent, ConfirmDialogComponent, ContactusComponent, FooterComponent, LoginComponent, LogoutComponent,

@@ -9,7 +9,8 @@ import {
   BaseService,
   GeneralService,
   CustomerService,
-  AccountService
+  AccountService,
+  EmailService
 } from 'shared-ui';
 import {Route, RouterModule} from '@angular/router';
 import { HeaderTestComponent } from './header-test/header-test.component';
@@ -111,6 +112,7 @@ const routes: Route[] = [{path: 'home', component: AppComponent},
       FlexLayoutModule
     ],
   providers: [DataShareService, UserService, BaseService, GeneralService, CustomerService, AccountService,
+    EmailService,
     {provide: 'environment', useValue: environment}],
   bootstrap: [AppComponent]
 })

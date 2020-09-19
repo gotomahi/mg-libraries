@@ -1,32 +1,42 @@
-<div class="col-md-12">
-<div class="row p-md-5">
-  <div class="col-md-5">
-    <div class="row padding-5"><span>Call us on <b>019080 49964</b></span></div>
-    <div class="row padding-5"><span>Send email to <b>queries@mgtechno.co.uk</b></span></div>
+<div fxLayout="row wrap" fxLayoutGap="30px grid" class="contactus">
+  <div fxFlex="40%">
+    <div><span>Call us on <b>019080 49964</b></span></div>
+    <div><span>Send email to <b>queries@mgtechno.co.uk</b></span></div>
   </div>
-  <div class="col-md-4">
-    <form [formGroup]="contactusForm" class="padding-5 box-10 " (submit)="sendEmail()">
-
-      <div class="form-group mb-md-3">
-        <input id="name" type="text" class="form-control" formControlName="name" placeholder="Full name" required>
+  <div fxFlex="60%">
+    <form [formGroup]="contactusForm" (submit)="sendEmail()">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Full name</mat-label>
+          <input matInput formControlName="name" type="text">
+        </mat-form-field>
       </div>
-      <div class="form-group mb-md-3">
-        <input id="destination" type="text" class="form-control" placeholder="E-Mail" formControlName="email" required>
+      <div>
+      <mat-form-field appearance="outline">
+        <mat-label>E-Mail</mat-label>
+        <input matInput formControlName="email" type="text">
+      </mat-form-field>
+    </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Query</mat-label>
+          <mat-select formControlName="queryType">
+            <mat-option value="General">General</mat-option>
+            <mat-option value="Sales">Sales</mat-option>
+            <mat-option value="Technical">Technical</mat-option>
+            <mat-option value="Other">Other</mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
-      <div class="mb-md-3 form-label-group">
-        <select id="queryType" type="text" class="form-control" formControlName="queryType" required>
-          <option value="General" selected>General</option>
-          <option value="Sales">Sales</option>
-          <option value="Technical">Technical</option>
-        </select>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Type your query</mat-label>
+          <textarea matInput formControlName="query" type="text"></textarea>
+        </mat-form-field>
       </div>
-      <div class="form-label-group">
-        <textarea id="query" formControlName="query" class="form-control" placeholder="Type your query" required rows="5"></textarea>
-      </div>
-      <div class=" offset-4">
-        <button type="submit" class="btn btn-success" [disabled]="contactusForm.invalid">Send Query</button>
+      <div>
+        <button mat-raised-button color="primary" [disabled]="contactusForm.invalid">Send Query</button>
       </div>
     </form>
   </div>
-</div>
 </div>
