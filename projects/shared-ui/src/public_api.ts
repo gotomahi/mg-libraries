@@ -14,6 +14,7 @@ export * from './lib/service/user.service';
 export * from './lib/model/customer';
 export * from './lib/model/menu';
 export * from './lib/model/header';
+export * from './lib/model/user';
 export * from './lib/components/can-deactivate/can-deactivate.guard';
 export * from './lib/components/can-deactivate/component-can-deactivate';
 export * from './lib/components/confirm/confirm.component';
