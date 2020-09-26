@@ -1,3 +1,5 @@
+import {User} from './user';
+
 export class Customer {
   id: number;
   companyName: string;
@@ -12,4 +14,5 @@ export class Customer {
   status: string;
   createdDate: Date;
   selected: boolean;
+  user: User;
 }
