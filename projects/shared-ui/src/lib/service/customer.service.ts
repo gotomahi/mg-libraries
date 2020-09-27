@@ -27,8 +27,8 @@ export class CustomerService {
       {headers: this.baseService.userHeaders()});
   }
 
-  registerCustomer(user: any): Observable<any> {
-    return this.http.post(this.baseService.environment.services.user, user,
+  registerCustomer(customer: any): Observable<any> {
+    return this.http.post(this.baseService.environment.services.customer, customer,
       {headers: this.baseService.anonymousHeaders()});
   }
 
