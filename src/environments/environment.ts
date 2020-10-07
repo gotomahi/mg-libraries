@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  recipient: 'mr.mgondi@gmail.com',
+  contactusTemplate: 'Welcome',
+  application: 'Address',
+  services: {
+    login: 'http://api.mgtechno.co.uk/uaa/oauth/token',
+    terms: 'http://api.mgtechno.co.uk/address/terms',
+    privacy: 'http://api.mgtechno.co.uk/address/privacy',
+    contactus: 'http://api.mgtechno.co.uk/email'
+  }
 };
 
 /*

@@ -4,7 +4,7 @@
     <div><span>Send email to <b>queries@mgtechno.co.uk</b></span></div>
   </div>
   <div fxFlex="60%">
-    <form [formGroup]="contactusForm" (submit)="sendEmail()">
+    <form [formGroup]="contactusForm">
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Full name</mat-label>
@@ -35,7 +35,7 @@
         </mat-form-field>
       </div>
       <div>
-        <button mat-raised-button color="primary" [disabled]="contactusForm.invalid">Send Query</button>
+        <button mat-raised-button color="primary" [disabled]="contactusForm.invalid" (click)="sendEmail()">Send Query</button>
       </div>
     </form>
   </div>

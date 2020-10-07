@@ -8,11 +8,12 @@ export class EmailService {
 
   constructor( private http: HttpClient, private baseService: BaseService) {}
 
-  public sendContactInfo(body: any): Observable<HttpEvent<any>> {
-    body.push('recipient', 'mr.mgondi@gmail.com');
-    body.push('template', 'AD/contactus');
-    body.push('termsUrl', 'http://localhost:8080/address/terms');
-    body.push('privacyUrl', 'http://localhost:8080/address/privacy');
-    return this.http.post<any>('http://localhost:8080/email/public/sendQuery', body, {headers: this.baseService.userHeaders()});
+  public sendContactInfo(contactus: any): Observable<HttpEvent<any>> {
+    contactus.recipient = this.baseService.environment.recipient;
+    contactus.template = this.baseService.environment.contactusTemplate;
+    contactus.termsUrl = this.baseService.environment.services.terms;
+    contactus.privacyUrl = this.baseService.environment.services.privacy;
+    contactus.application = this.baseService.environment.application;
+    return this.http.post<any>(this.baseService.environment.services.contactus, contactus, {headers: this.baseService.getHeaders()});
   }
 }

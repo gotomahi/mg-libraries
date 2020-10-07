@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EmailService} from '../../service/email.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import {Contactus} from "../../model/contactus";
 
 @Component({
   selector: 'lib-contactus',
@@ -22,7 +23,9 @@ export class ContactusComponent implements OnInit {
   }
 
   sendEmail(): void {
-    this.emailService.sendContactInfo(this.contactusForm.value).subscribe( result => {});
+    let contactus = new Contactus();
+    Object.assign(contactus, this.contactusForm.getRawValue());
+    this.emailService.sendContactInfo(contactus).subscribe( result => {});
   }
 
 }

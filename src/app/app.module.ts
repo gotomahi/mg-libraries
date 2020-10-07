@@ -55,7 +55,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
-import {environment} from "../../../lending-ui/src/environments/environment";
+import {environment} from '../environments/environment';
 
 const routes: Route[] = [{path: 'home', component: AppComponent},
   {path: 'product', component: AppComponent}];

@@ -1,6 +1,6 @@
 $base-color: #5F9FD0;
 $header-font-color: #FFFFFF;
-
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 body {
   font-family: Verdana Pro Regular !important;
   font-size: 15px !important;
@@ -16,120 +16,10 @@ body, .table, .form-control{
 h5, h4, h3, th{
   color: #19263F;
 }
-
-.container-fluid{
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-
-.navbar-dark, .btn-success{
-  background-color: $base-color;
-}
-
-h6{
-  color: $base-color;
-}
-
-.btn-success{
-  border-color: $base-color !important;
-}
-
-.basic-container {
-  padding: 30px;
-}
-
-.version-info {
-  font-size: 8pt;
-  float: right;
-}
-
-.margin-top-10{
-  margin-top: 10% !important;
-}
-
-.content{
-  min-height: calc(100vh - 276px);
-}
-
-.navbar{
-  padding: 2rem 1rem !important;
-}
-
-.form-control {
-  padding: 1.375rem 0.75rem !important;
-}
-
-.form-label-group > input, .form-label-group > select{
-  width: 100%;
-  line-height: 2.5;
-}
-
-.form-label-group > textarea {
-  width: 100%;
-}
-
-.row {
-  margin-left: 0px  !important;
-  margin-right: 0px !important;
-}
-
-div.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-clip: border-box;
-  border: 1px solid #fff !important;
-  border-radius: 0.25rem;
-      border-bottom-right-radius: 0.25rem;
-      border-bottom-left-radius: 0.25rem;
-}
-.card-header, .card {
-  background-color: #fff;
-}
-.pointer {
-  cursor: pointer;
-}
-
-/* The emerging W3C standard
-   that is currently Firefox-only */
-  body {
-    scrollbar-width: thin;
-    scrollbar-color: $base-color #ccc;
-  }
-
-  /* Works on Chrome/Edge/Safari */
-  body::-webkit-scrollbar {
-    width: 8px;
-  }
-  body::-webkit-scrollbar-track {
-    background: #ccc;
-  }
-  body::-webkit-scrollbar-thumb {
-    background-color: $base-color;
-    border: 2px solid #ccc;
-  }
-
-  .modal-dialog{
-    max-width: 70% !important;
-  }
-
-  .accordion {
-    .card {
-      width: 100%;
-      .card-header {
-        border-bottom: none !important;
-        background-color: inherit !important;
-        i {
-          vertical-align: middle;
-        }
-      }
-      .card-body{
-        padding: 0 0 0 30px;
-      }
-    }
-  }
 .menu-spacer{
   flex: 1 1 auto;
+}
+
+.mat-form-field-flex {
+  min-height: 30px !important;
 }

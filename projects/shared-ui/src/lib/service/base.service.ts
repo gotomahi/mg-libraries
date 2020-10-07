@@ -24,6 +24,14 @@ export class BaseService {
     return this.headers(this.dataShareService.anonymous.getValue());
   }
 
+  public getHeaders(): any {
+    if (this.dataShareService.token && this.dataShareService.token.getValue()) {
+      return this.headers(this.dataShareService.token.getValue());
+    } else {
+      return this.headers(this.dataShareService.anonymous.getValue());
+    }
+  }
+
   private headers(token: any): any {
     return {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.access_token};
   }
