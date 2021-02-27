@@ -56,6 +56,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
 import {environment} from '../environments/environment';
+import {NgxDocViewerModule} from 'ngx-doc-viewer';
 
 const routes: Route[] = [{path: 'home', component: AppComponent},
   {path: 'product', component: AppComponent}];
@@ -109,7 +110,8 @@ const routes: Route[] = [{path: 'home', component: AppComponent},
       MatToolbarModule,
       MatTooltipModule,
       MatTreeModule,
-      FlexLayoutModule
+      FlexLayoutModule,
+      NgxDocViewerModule
     ],
   providers: [DataShareService, UserService, BaseService, GeneralService, CustomerService, AccountService,
     EmailService,

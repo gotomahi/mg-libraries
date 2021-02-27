@@ -11,7 +11,7 @@ export class UserService {
   }
 
   authenticate(token: string, username: string, password: string): Observable<string> {
-    const authorization = token ? 'Bearer ' + token : 'Basic ' + btoa('address:password');
+    const authorization = token !== null && token !== undefined && token !== '' ? 'Bearer ' + token : 'Basic ' + btoa('address:password');
     return this.http.post<string>(this.baseService.environment.services.login + '?grant_type=password&username=' + username + '&password=' + password,
       null, {headers: {'Content-Type': 'application/json', 'authorization': authorization}});
   }

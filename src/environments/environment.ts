@@ -8,10 +8,10 @@ export const environment = {
   contactusTemplate: 'Welcome',
   application: 'Address',
   services: {
-    login: 'http://api.mgtechno.co.uk/uaa/oauth/token',
-    terms: 'http://api.mgtechno.co.uk/address/terms',
-    privacy: 'http://api.mgtechno.co.uk/address/privacy',
-    contactus: 'http://api.mgtechno.co.uk/email'
+    login: 'http://localhost:8080/uaa/oauth/token',
+    terms: 'http://localhost:8080/address/terms',
+    privacy: 'http://localhost:8080/address/privacy',
+    contactus: 'http://localhost:8080/email'
   }
 };
 

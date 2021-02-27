@@ -42,11 +42,12 @@ export class LoginComponent implements OnInit {
               });
               this.router.navigate(['home'], {skipLocationChange: true});
             } else {
-              console.log('failed to authenticate the user ' + result);
+              this.loginForm.setErrors({serverError: 'Token is not valid'});
             }
           },
       (error) => {
-        this.loginForm.errors['submit'] = 'Failed to authenticate'; }
+          this.loginForm.setErrors({serverError: 'Username or password is incorrect'});
+        }
       );
   }
 

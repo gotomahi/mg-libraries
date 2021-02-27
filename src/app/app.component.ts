@@ -9,6 +9,7 @@ import {BaseService, DataShareService, Header, UserService} from 'shared-ui';
 export class AppComponent implements OnInit{
   title = 'app';
   header: Header;
+  doc: any;
 
   constructor(private baseService: BaseService, private userService: UserService, private dataShareService: DataShareService) {
   }
@@ -22,6 +23,7 @@ export class AppComponent implements OnInit{
         this.dataShareService.anonymous.next(result);
       }
     );
+    this.doc = 'api.mgtechno.co.uk/ppt';
   }
 
 }
