@@ -5,4 +5,5 @@ export class Menu {
   allowedOnLogin: boolean;
   skipLocationChange: boolean;
   menuSide: string;
+  accessRoles?: string;
 }

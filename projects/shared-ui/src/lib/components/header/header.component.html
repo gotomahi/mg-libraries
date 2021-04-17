@@ -4,12 +4,12 @@
     </button>
     <span class="app-title">MG Techno Ltd</span>
       <span *ngFor="let m of header.menu" fxHide.lt-sm="true">
-        <a fxHide.sm *ngIf="m.menuSide === 'left' && ((!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn))"
-                [routerLink]="m.link" class="mat-menu-item" [skipLocationChange]="true" routerLinkActive="selected-menu-item">{{m.displayName}}</a>
+        <a fxHide.sm *ngIf="m.menuSide === 'left' && hasAccessible(m.accessRoles) && ((!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn))"
+                [routerLink]="m.link" class="mat-menu-item" [skipLocationChange]="true" routerLinkActive="selected-menu-item" >{{m.displayName}}</a>
       </span>
       <span class="menu-spacer"></span>
       <span *ngFor="let m of header.menu" fxHide.lt-sm="true">
-        <a fxHide.sm *ngIf="m.menuSide === 'right' && ((!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn))" [routerLink]="m.link"
+        <a fxHide.sm *ngIf="m.menuSide === 'right' && hasAccessible(m.accessRoles) && ((!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn))" [routerLink]="m.link"
            class="mat-menu-item" [skipLocationChange]="true" routerLinkActive="selected-menu-item">{{m.displayName}}</a>
       </span>
 </mat-toolbar>
@@ -18,7 +18,7 @@
   <mat-sidenav #sidenav fixedInViewport="true" [mode]="mobileMode" role="navigation" position="end">
     <mat-nav-list>
       <span *ngFor="let m of header.menu">
-        <a mat-list-item *ngIf="(!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn)"
+        <a mat-list-item *ngIf="hasAccessible(m.accessRoles) && (!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn)"
                 [routerLink]="m.link" class="mat-nav-list-item" [skipLocationChange]="true" routerLinkActive="active">{{m.displayName}}</a>
       </span>
     </mat-nav-list>

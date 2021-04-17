@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Menu} from '../../model/menu';
 import {DataShareService} from '../../service/data-share.service';
 import {Header} from '../../model/header';
+import has = Reflect.has;
 
 @Component({
   selector: 'lib-header',
@@ -19,6 +20,25 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  hasAccessible(accessRoles: string): boolean{
+    let hasAccess = false;
+    if(accessRoles) {
+      const token = this.dataShareService.token.getValue();
+      if (token) {
+        const roles = accessRoles.split(',');
+        for (const role of roles) {
+          if (token.authorities.contains(role)) {
+            hasAccess = true;
+            break;
+          }
+        }
+      }
+    } else {
+      hasAccess = true;
+    }
+    return hasAccess;
   }
 
 }
