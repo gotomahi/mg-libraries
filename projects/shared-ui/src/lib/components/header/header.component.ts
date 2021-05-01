@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataShareService.header.next(this.header);
   }
 
   hasAccessible(accessRoles: string): Observable<string>{

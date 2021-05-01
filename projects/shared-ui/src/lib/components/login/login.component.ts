@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
                 this.dataShareService.customer.next(customer);
                 this.accountService.getAccount();
               });
-              this.router.navigate(['home'], {skipLocationChange: true});
+              this.router.navigate([this.dataShareService.header.getValue().defaultPage], {skipLocationChange: true});
             } else {
               this.loginForm.setErrors({serverError: 'Token is not valid'});
             }

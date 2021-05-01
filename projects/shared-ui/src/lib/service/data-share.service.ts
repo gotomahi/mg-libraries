@@ -11,4 +11,5 @@ export class DataShareService {
   public customer: BehaviorSubject<Customer> = new BehaviorSubject<Customer>(null);
   public account: BehaviorSubject<Account> = new BehaviorSubject<Account>(null);
   public anonymous: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  public header: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 }
