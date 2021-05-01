@@ -16,11 +16,11 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.header = {menu: [{displayName: 'Home', name:'Home', link: '/home', allowedOnLogin: false, skipLocationChange: true, menuSide: 'left'},
-        {displayName: 'Product', link: '/product', name: 'Product', allowedOnLogin: false, skipLocationChange: true, menuSide: 'right'}], emailContact: null, phoneContact: null, rightSideOffset: 'offset-4'};
+        {displayName: 'Product', accessRoles: 'role_anonymous1', link: '/product', name: 'Product', allowedOnLogin: false, skipLocationChange: true, menuSide: 'right'}], emailContact: null, phoneContact: null, rightSideOffset: 'offset-4'};
 
     this.userService.anonymousLogin().subscribe(
       result => {
-        this.dataShareService.anonymous.next(result);
+        this.dataShareService.token.next(result);
       }
     );
     this.doc = 'api.mgtechno.co.uk/ppt';

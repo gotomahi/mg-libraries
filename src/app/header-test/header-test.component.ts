@@ -14,7 +14,7 @@ export class HeaderTestComponent implements OnInit {
   ngOnInit(): void {
     this.header = {menu: [
       {displayName: 'Home', name:'Home', link: '/home', allowedOnLogin: false, skipLocationChange: true, menuSide: 'left'},
-      {displayName: 'Product', accessRoles: 'admin',  link: '/product', name: 'Product', allowedOnLogin: false, skipLocationChange: true, menuSide: 'right'}
+      {displayName: 'Product', accessRoles: 'role_anonymous',  link: '/product', name: 'Product', allowedOnLogin: false, skipLocationChange: true, menuSide: 'right'}
         ], emailContact: null, phoneContact: null, rightSideOffset: 'offset-4'};
   }
 

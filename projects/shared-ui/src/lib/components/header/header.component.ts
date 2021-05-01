@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Menu} from '../../model/menu';
 import {DataShareService} from '../../service/data-share.service';
 import {Header} from '../../model/header';
-import has = Reflect.has;
+import {Observable, of} from "rxjs";
 
 @Component({
   selector: 'lib-header',
@@ -22,23 +22,29 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  hasAccessible(accessRoles: string): boolean{
-    let hasAccess = false;
+  hasAccessible(accessRoles: string): Observable<string>{
+    let hasAccess = 'false';
     if(accessRoles) {
-      const token = this.dataShareService.token.getValue();
-      if (token) {
-        const roles = accessRoles.split(',');
-        for (const role of roles) {
-          if (token.authorities.contains(role)) {
-            hasAccess = true;
-            break;
+      this.dataShareService.token.subscribe(value => {
+        if(value) {
+          let token: any = atob(value.access_token.split('.')[1]);
+          token = JSON.parse(token);
+          if (token) {
+            const roles = accessRoles.split(',');
+            for (const role of roles) {
+              const matchedRole = token.authorities.filter(auth => auth === role);
+              if (matchedRole !== undefined && matchedRole !== null && matchedRole.toString().replace(/ /g, '') !== '') {
+                hasAccess = 'true';
+                break;
+              }
+            }
           }
         }
-      }
+      });
     } else {
-      hasAccess = true;
+      hasAccess = 'true';
     }
-    return hasAccess;
+    return of(hasAccess);
   }
 
 }

@@ -4,22 +4,28 @@
     </button>
     <span class="app-title">MG Techno Ltd</span>
       <span *ngFor="let m of header.menu" fxHide.lt-sm="true">
-        <a fxHide.sm *ngIf="m.menuSide === 'left' && hasAccessible(m.accessRoles) && ((!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn))"
+        <span *ngIf="(hasAccessible(m.accessRoles) | async) === 'true'">
+        <a fxHide.sm *ngIf="m.menuSide === 'left' && ((!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn))"
                 [routerLink]="m.link" class="mat-menu-item" [skipLocationChange]="true" routerLinkActive="selected-menu-item" >{{m.displayName}}</a>
+        </span>
       </span>
       <span class="menu-spacer"></span>
       <span *ngFor="let m of header.menu" fxHide.lt-sm="true">
-        <a fxHide.sm *ngIf="m.menuSide === 'right' && hasAccessible(m.accessRoles) && ((!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn))" [routerLink]="m.link"
+        <span *ngIf="(hasAccessible(m.accessRoles) | async) === 'true'">
+        <a fxHide.sm *ngIf="m.menuSide === 'right' && ((!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn))" [routerLink]="m.link"
            class="mat-menu-item" [skipLocationChange]="true" routerLinkActive="selected-menu-item">{{m.displayName}}</a>
-      </span>
+        </span>
+        </span>
 </mat-toolbar>
 <div>
 <mat-sidenav-container fxFlexFill fxHide.gt-sm="true">
   <mat-sidenav #sidenav fixedInViewport="true" [mode]="mobileMode" role="navigation" position="end">
     <mat-nav-list>
       <span *ngFor="let m of header.menu">
-        <a mat-list-item *ngIf="hasAccessible(m.accessRoles) && (!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn)"
+        <span *ngIf="(hasAccessible(m.accessRoles) | async) === 'true'">
+        <a mat-list-item *ngIf="(!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn)"
                 [routerLink]="m.link" class="mat-nav-list-item" [skipLocationChange]="true" routerLinkActive="active">{{m.displayName}}</a>
+        </span>
       </span>
     </mat-nav-list>
   </mat-sidenav>
