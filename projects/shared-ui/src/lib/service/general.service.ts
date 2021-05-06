@@ -5,7 +5,7 @@ import {of} from 'rxjs/internal/observable/of';
 import {BaseService} from './base.service';
 import {DataShareService} from './data-share.service';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class GeneralService {
 
   constructor(private http: HttpClient, private baseService: BaseService, private dataShareService: DataShareService) { }

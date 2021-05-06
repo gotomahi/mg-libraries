@@ -11,6 +11,7 @@ export * from './lib/service/email.service';
 export * from './lib/service/general.service';
 export * from './lib/service/refresh.token.interceptor';
 export * from './lib/service/user.service';
+export * from './lib/service/menu.service';
 export * from './lib/model/customer';
 export * from './lib/model/menu';
 export * from './lib/model/header';

@@ -4,7 +4,7 @@ import {DataShareService} from './data-share.service';
 import {HttpClient, HttpEvent} from '@angular/common/http';
 import {Observable} from 'rxjs/internal/Observable';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class AccountService {
 
   constructor(private http: HttpClient, private baseService: BaseService, private dataShareService: DataShareService) {

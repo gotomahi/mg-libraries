@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {BaseService, DataShareService, Header, UserService} from 'shared-ui';
 
 @Component({
@@ -8,23 +8,22 @@ import {BaseService, DataShareService, Header, UserService} from 'shared-ui';
 })
 export class AppComponent implements OnInit{
   title = 'app';
-  header: Header;
   doc: any;
 
-  constructor(private baseService: BaseService, private userService: UserService, private dataShareService: DataShareService) {
+  constructor(private baseService: BaseService, private userService: UserService,
+              private dataShareService: DataShareService) {
+    this.dataShareService.isUserLoggedIn.subscribe(result => {
+      console.log('===========' + result);
+    });
   }
 
   ngOnInit(): void {
-    this.header = {menu: [{displayName: 'Home', name:'Home', link: '/home', allowedOnLogin: false, skipLocationChange: true, menuSide: 'left'},
-                          {displayName: 'Product', accessRoles: 'role_anonymous1', link: '/product', name: 'Product', allowedOnLogin: false, skipLocationChange: true, menuSide: 'right'}
-                          ], home: 'Home', emailContact: null, phoneContact: null, rightSideOffset: 'offset-4'};
-
-    this.userService.anonymousLogin().subscribe(
+    this.userService.authenticate(null, 'anonymous', 'password').subscribe(
       result => {
+        this.dataShareService.isUserLoggedIn.next(true);
         this.dataShareService.token.next(result);
       }
     );
-    this.doc = 'api.mgtechno.co.uk/ppt';
   }
 
 }

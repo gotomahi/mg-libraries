@@ -3,7 +3,7 @@ import {HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/internal/Observable';
 import {DataShareService} from './data-share.service';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class BaseService {
   public environment: any;
 

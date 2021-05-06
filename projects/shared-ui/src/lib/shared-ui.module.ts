@@ -20,8 +20,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
-import {FlexLayoutModule} from "@angular/flex-layout";
-import {MatSelectModule} from "@angular/material/select";
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
     imports: [

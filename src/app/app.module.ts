@@ -56,6 +56,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
 import {environment} from '../environments/environment';
+import {LoginComponent} from "../../projects/shared-ui/src/lib/components/login/login.component";
 
 const routes: Route[] = [{path: 'home', component: AppComponent},
   {path: 'product', component: AppComponent}];
@@ -111,8 +112,7 @@ const routes: Route[] = [{path: 'home', component: AppComponent},
       MatTreeModule,
       FlexLayoutModule
     ],
-  providers: [DataShareService, UserService, BaseService, GeneralService, CustomerService, AccountService,
-    EmailService,
+  providers: [DataShareService, LoginComponent,
     {provide: 'environment', useValue: environment}],
   bootstrap: [AppComponent]
 })

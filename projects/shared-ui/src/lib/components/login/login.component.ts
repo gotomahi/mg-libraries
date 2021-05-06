@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Route} from '@angular/compiler/src/core';
 import {Router} from '@angular/router';
 
@@ -15,12 +15,13 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  @Output()
+  loginEvent = new EventEmitter<any>();
   hide = true;
   loginForm: FormGroup;
 
-  constructor(private userService: UserService, private router: Router, private dataShareService: DataShareService,
-              private generalService: GeneralService, private customerService: CustomerService,
-              private accountService: AccountService, private formBuilder: FormBuilder) {
+  constructor(private userService: UserService, private router: Router,
+              private dataShareService: DataShareService, private formBuilder: FormBuilder) {
         this.loginForm = formBuilder.group({
           userName: new FormControl('', [Validators.required]),
           password: new FormControl('', [Validators.required])
@@ -36,11 +37,11 @@ export class LoginComponent implements OnInit {
             if ( result.access_token ) {
               this.dataShareService.isUserLoggedIn.next(true);
               this.dataShareService.token.next(result);
-              this.customerService.getCustomer().subscribe( (customer: any) => {
-                this.dataShareService.customer.next(customer);
-                this.accountService.getAccount();
-              });
-              this.router.navigate([this.dataShareService.header.getValue().defaultPage], {skipLocationChange: true});
+              // this.customerService.getCustomer().subscribe( (customer: any) => {
+              //   this.dataShareService.customer.next(customer);
+              //   this.accountService.getAccount();
+              // });
+              this.loginEvent.emit({success: true});
             } else {
               this.loginForm.setErrors({serverError: 'Token is not valid'});
             }

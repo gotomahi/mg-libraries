@@ -1,14 +1,14 @@
 // src/app/services/token-interceptor.service.ts
 
-import { Injectable } from "@angular/core";
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from "@angular/common/http";
-import { UserService } from "./user.service";
-import { Observable } from "rxjs/internal/Observable";
-import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
-import { switchMap, filter, take, catchError } from "rxjs/operators";
-import { throwError } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import { UserService } from './user.service';
+import { Observable } from 'rxjs/internal/Observable';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { switchMap, filter, take, catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class RefreshTokenInterceptor implements HttpInterceptor {
     private refreshTokenInProgress = false;
     // Refresh Token Subject tracks the current token, or is null if no token is currently
@@ -22,13 +22,13 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
             // We don't want to refresh token for some requests like login or refresh token itself
             // So we verify url and we throw an error if it's the case
             if (
-                request.url.includes("refreshtoken") ||
-                request.url.includes("token")
+                request.url.includes('refreshtoken') ||
+                request.url.includes('token')
             ) {
                 // We do another check to see if refresh token failed
                 // In this case we want to logout user and to redirect it to login page
 
-                if (request.url.includes("refreshtoken")) {
+                if (request.url.includes('refreshtoken')) {
                     //this.userService.logout();
                 }
 
@@ -72,7 +72,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
                         //this.userService.logout();
                         return throwError(error);
                     })
-                    )
+                    );
             }
         }));
     }

@@ -3,7 +3,7 @@ import {HttpClient, HttpEvent} from '@angular/common/http';
 import {Observable} from 'rxjs/internal/Observable';
 import {Injectable} from '@angular/core';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class EmailService {
 
   constructor( private http: HttpClient, private baseService: BaseService) {}

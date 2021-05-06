@@ -5,7 +5,7 @@ import {BaseService} from './base.service';
 import {DataShareService} from './data-share.service';
 import {Customer} from '../model/customer';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class CustomerService {
 
   constructor(private http: HttpClient, private baseService: BaseService,

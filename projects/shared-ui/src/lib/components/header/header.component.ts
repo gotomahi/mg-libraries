@@ -2,7 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Menu} from '../../model/menu';
 import {DataShareService} from '../../service/data-share.service';
 import {Header} from '../../model/header';
-import {Observable, of} from "rxjs";
+import {Observable, of} from 'rxjs';
+import {MenuService} from '../../service/menu.service';
 
 @Component({
   selector: 'lib-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
   loggedIn: boolean;
   mobileMode: string;
 
-  constructor(private dataShareService: DataShareService) {
+  constructor(private dataShareService: DataShareService, private menuService: MenuService) {
     dataShareService.isUserLoggedIn.subscribe(value => this.loggedIn = value);
   }
 
@@ -27,19 +28,8 @@ export class HeaderComponent implements OnInit {
     let hasAccess = 'false';
     if(accessRoles) {
       this.dataShareService.token.subscribe(value => {
-        if(value) {
-          let token: any = atob(value.access_token.split('.')[1]);
-          token = JSON.parse(token);
-          if (token) {
-            const roles = accessRoles.split(',');
-            for (const role of roles) {
-              const matchedRole = token.authorities.filter(auth => auth === role);
-              if (matchedRole !== undefined && matchedRole !== null && matchedRole.toString().replace(/ /g, '') !== '') {
-                hasAccess = 'true';
-                break;
-              }
-            }
-          }
+        if (value && this.menuService.menuAccessible(accessRoles, value)) {
+          hasAccess = 'true';
         }
       });
     } else {
