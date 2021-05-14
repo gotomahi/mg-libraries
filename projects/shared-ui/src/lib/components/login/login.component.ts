@@ -35,12 +35,8 @@ export class LoginComponent implements OnInit {
     this.userService.authenticate(this.dataShareService.token.getValue(), this.loginForm.value.userName,
       this.loginForm.value.password).subscribe( (result: any) => {
             if ( result.access_token ) {
-              this.dataShareService.isUserLoggedIn.next(true);
               this.dataShareService.token.next(result);
-              // this.customerService.getCustomer().subscribe( (customer: any) => {
-              //   this.dataShareService.customer.next(customer);
-              //   this.accountService.getAccount();
-              // });
+              this.dataShareService.isUserLoggedIn.next(true);
               this.loginEvent.emit({success: true});
             } else {
               this.loginForm.setErrors({serverError: 'Token is not valid'});

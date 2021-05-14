@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {BaseService, DataShareService, Header, UserService} from 'shared-ui';
+import {BaseService, DataShareService, Header, MenuService, UserService} from 'shared-ui';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,22 +9,33 @@ import {BaseService, DataShareService, Header, UserService} from 'shared-ui';
 })
 export class AppComponent implements OnInit{
   title = 'app';
-  doc: any;
+  headerData: Header;
 
   constructor(private baseService: BaseService, private userService: UserService,
-              private dataShareService: DataShareService) {
-    this.dataShareService.isUserLoggedIn.subscribe(result => {
-      console.log('===========' + result);
-    });
+              private dataShareService: DataShareService, private menuService: MenuService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
-    this.userService.authenticate(null, 'anonymous', 'password').subscribe(
-      result => {
-        this.dataShareService.isUserLoggedIn.next(true);
-        this.dataShareService.token.next(result);
+    this.headerData = {menu: [
+        {displayName: 'Home', name: 'Home', link: '/home', accessRoles: 'role_admin', allowedOnLogin: true,
+          skipLocationChange: true, menuSide: 'left'},
+        {displayName: 'Myhome', name: 'Home', accessRoles: 'role_student', link: '/myhome', allowedOnLogin: true,
+          skipLocationChange: true, menuSide: 'left'},
+        {displayName: 'Product', accessRoles: 'role_anonymous',  link: '/product', name: 'Product',
+          allowedOnLogin: false, skipLocationChange: true, menuSide: 'right'},
+        {displayName: 'Logout', link: '/logout', name: 'logout',
+          allowedOnLogin: true, skipLocationChange: true, menuSide: 'right'}
+      ], emailContact: null, phoneContact: null, rightSideOffset: 'offset-4', home: 'Home'};
+
+    this.dataShareService.isUserLoggedIn.subscribe(result => {
+      let nextPage = 'home';
+      if (result === true) {
+        const token = this.dataShareService.token.getValue();
+        nextPage = this.menuService.getDefaultMenu(token);
       }
-    );
+      this.router.navigate([nextPage], {skipLocationChange: true});
+    });
   }
 
 }

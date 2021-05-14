@@ -16,26 +16,28 @@ export class HeaderComponent implements OnInit {
   loggedIn: boolean;
   mobileMode: string;
 
-  constructor(private dataShareService: DataShareService, private menuService: MenuService) {
-    dataShareService.isUserLoggedIn.subscribe(value => this.loggedIn = value);
+  constructor(public dataShareService: DataShareService, private menuService: MenuService) {
   }
 
   ngOnInit() {
     this.dataShareService.header.next(this.header);
+    this.dataShareService.isUserLoggedIn.subscribe(value => {
+      this.loggedIn = value;
+      if(value === true) {
+        this.header = this.menuService.filterUserMenu(this.dataShareService.token.getValue());
+        console.log(this.header);
+      }
+    });
   }
 
-  hasAccessible(accessRoles: string): Observable<string>{
-    let hasAccess = 'false';
-    if(accessRoles) {
-      this.dataShareService.token.subscribe(value => {
-        if (value && this.menuService.menuAccessible(accessRoles, value)) {
-          hasAccess = 'true';
-        }
-      });
-    } else {
-      hasAccess = 'true';
+  hasAccessible(accessRoles: string): Observable<boolean>{
+    const token = this.dataShareService.token.getValue();
+    let accessible = accessRoles ? false : true;
+    if(token && accessRoles) {
+      accessible = this.menuService.menuAccessible(accessRoles.split(','), token);
+      console.log(accessRoles + ' is accessible ' + accessible);
     }
-    return of(hasAccess);
+    return of(accessible);
   }
 
 }

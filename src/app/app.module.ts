@@ -56,14 +56,22 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
 import {environment} from '../environments/environment';
-import {LoginComponent} from "../../projects/shared-ui/src/lib/components/login/login.component";
+import {LoginComponent} from '../../projects/shared-ui/src/lib/components/login/login.component';
+import { HomeTestComponent } from './home-test/home-test.component';
+import { MyhomeTestComponent } from './myhome-test/myhome-test.component';
 
-const routes: Route[] = [{path: 'home', component: AppComponent},
-  {path: 'product', component: AppComponent}];
+const routes: Route[] = [
+  {path: 'home', component: HomeTestComponent},
+  {path: 'myhome', component: MyhomeTestComponent},
+  {path: 'product', component: AppComponent}
+  ];
+
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderTestComponent
+    HeaderTestComponent,
+    HomeTestComponent,
+    MyhomeTestComponent
   ],
     imports: [
       BrowserModule,

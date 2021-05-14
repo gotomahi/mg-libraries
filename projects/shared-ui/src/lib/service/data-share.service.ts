@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
 import {Customer} from '../model/customer';
+import {Header} from "../model/header";
 
 @Injectable({providedIn: 'root'})
 export class DataShareService {
@@ -11,5 +12,5 @@ export class DataShareService {
   public customer: BehaviorSubject<Customer> = new BehaviorSubject<Customer>(null);
   public account: BehaviorSubject<Account> = new BehaviorSubject<Account>(null);
   public anonymous: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  public header: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  public header: BehaviorSubject<Header> = new BehaviorSubject<Header>(null);
 }
