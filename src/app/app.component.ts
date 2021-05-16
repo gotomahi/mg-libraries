@@ -22,10 +22,12 @@ export class AppComponent implements OnInit{
           skipLocationChange: true, menuSide: 'left'},
         {displayName: 'Myhome', name: 'Home', accessRoles: 'role_student', link: '/myhome', allowedOnLogin: true,
           skipLocationChange: true, menuSide: 'left'},
-        {displayName: 'Product', accessRoles: 'role_anonymous',  link: '/product', name: 'Product',
-          allowedOnLogin: false, skipLocationChange: true, menuSide: 'right'},
-        {displayName: 'Logout', link: '/logout', name: 'logout',
-          allowedOnLogin: true, skipLocationChange: true, menuSide: 'right'}
+        {displayName: 'Product', name: 'Product', accessRoles: 'role_student', allowedOnLogin: true, menuSide: 'right',
+          subMenu: [
+            {displayName: 'Product1', link: '/product', name: 'Product1', accessRoles: 'role_student', allowedOnLogin: false, skipLocationChange: true},
+            {displayName: 'Product2', link: '/product', name: 'Product2', accessRoles: 'role_student', allowedOnLogin: false, skipLocationChange: true}
+          ]},
+        {displayName: 'Logout', link: '/logout', name: 'logout', allowedOnLogin: true, skipLocationChange: true, menuSide: 'right'}
       ], emailContact: null, phoneContact: null, rightSideOffset: 'offset-4', home: 'Home'};
 
     this.dataShareService.isUserLoggedIn.subscribe(result => {

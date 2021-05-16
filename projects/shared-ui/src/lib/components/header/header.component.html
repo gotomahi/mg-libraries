@@ -4,16 +4,37 @@
     </button>
     <span class="app-title">MG Techno Ltd</span>
       <span *ngFor="let m of this.dataShareService.header.getValue()?.menu" fxHide.lt-sm="true">
+
         <span *ngIf="(hasAccessible(m.accessRoles) | async) === true">
-        <a fxHide.sm *ngIf="m.menuSide === 'left' && ((!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn))"
-                [routerLink]="m.link" class="mat-menu-item" [skipLocationChange]="true" routerLinkActive="selected-menu-item" >{{m.displayName}}</a>
+          <span *ngIf="m.subMenu; else singleMenu">
+            <a [matMenuTriggerFor]="submenu" *ngIf="m.menuSide === 'left' && (!m.allowedOnLogin  || loggedIn)">{{m.displayName}}</a>
+            <mat-menu #submenu="matMenu" yPosition="below">
+              <span *ngFor="let s of m.subMenu">
+                <a mat-menu-item class="sub-menu-item" fxHide.sm *ngIf="!m.allowedOnLogin  || loggedIn">{{s.displayName}}</a>
+              </span>
+          </mat-menu>
+          </span>
+          <ng-template #singleMenu>
+            <a fxHide.sm *ngIf="m.menuSide === 'left' && (!m.allowedOnLogin  || loggedIn)" [routerLink]="m.link"
+               class="mat-menu-item" [skipLocationChange]="true" routerLinkActive="selected-menu-item">{{m.displayName}}</a>
+          </ng-template>
         </span>
       </span>
       <span class="menu-spacer"></span>
       <span *ngFor="let m of this.dataShareService.header.getValue()?.menu" fxHide.lt-sm="true">
         <span *ngIf="(hasAccessible(m.accessRoles) | async) === true">
-        <a fxHide.sm *ngIf="m.menuSide === 'right' && ((!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn))" [routerLink]="m.link"
-           class="mat-menu-item" [skipLocationChange]="true" routerLinkActive="selected-menu-item">{{m.displayName}}</a>
+          <span *ngIf="m.subMenu; else singleMenu">
+            <a [matMenuTriggerFor]="submenu" *ngIf="m.menuSide === 'right' && (!m.allowedOnLogin  || loggedIn)">{{m.displayName}}</a>
+            <mat-menu #submenu="matMenu" yPosition="below">
+              <span *ngFor="let s of m.subMenu">
+                <a mat-menu-item class="sub-menu-item" fxHide.sm *ngIf="!m.allowedOnLogin  || loggedIn">{{s.displayName}}</a>
+              </span>
+          </mat-menu>
+          </span>
+          <ng-template #singleMenu>
+            <a fxHide.sm *ngIf="m.menuSide === 'right' && (!m.allowedOnLogin  || loggedIn)" [routerLink]="m.link"
+               class="mat-menu-item" [skipLocationChange]="true" routerLinkActive="selected-menu-item">{{m.displayName}}</a>
+          </ng-template>
         </span>
         </span>
 </mat-toolbar>
@@ -23,7 +44,7 @@
     <mat-nav-list>
       <span *ngFor="let m of this.dataShareService.header.getValue()?.menu">
         <span *ngIf="(hasAccessible(m.accessRoles) | async) === true">
-        <a mat-list-item *ngIf="(!m.allowedOnLogin && !loggedIn) || (m.allowedOnLogin && loggedIn)"
+        <a mat-list-item *ngIf="!m.allowedOnLogin  || loggedIn"
                 [routerLink]="m.link" class="mat-nav-list-item" [skipLocationChange]="true" routerLinkActive="active">{{m.displayName}}</a>
         </span>
       </span>

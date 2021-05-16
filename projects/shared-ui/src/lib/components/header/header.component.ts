@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
       this.loggedIn = value;
       if(value === true) {
         this.header = this.menuService.filterUserMenu(this.dataShareService.token.getValue());
-        console.log(this.header);
       }
     });
   }
@@ -35,7 +34,6 @@ export class HeaderComponent implements OnInit {
     let accessible = accessRoles ? false : true;
     if(token && accessRoles) {
       accessible = this.menuService.menuAccessible(accessRoles.split(','), token);
-      console.log(accessRoles + ' is accessible ' + accessible);
     }
     return of(accessible);
   }
