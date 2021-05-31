@@ -59,6 +59,8 @@ import {environment} from '../environments/environment';
 import {LoginComponent} from '../../projects/shared-ui/src/lib/components/login/login.component';
 import { HomeTestComponent } from './home-test/home-test.component';
 import { MyhomeTestComponent } from './myhome-test/myhome-test.component';
+import { PendingCoursesComponent } from './pending-courses/pending-courses.component';
+import { CompletedCoursesComponent } from './completed-courses/completed-courses.component';
 
 const routes: Route[] = [
   {path: 'home', component: HomeTestComponent},
@@ -71,7 +73,9 @@ const routes: Route[] = [
     AppComponent,
     HeaderTestComponent,
     HomeTestComponent,
-    MyhomeTestComponent
+    MyhomeTestComponent,
+    PendingCoursesComponent,
+    CompletedCoursesComponent
   ],
     imports: [
       BrowserModule,

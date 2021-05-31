@@ -41,17 +41,16 @@ export class MenuService {
   }
 
   public menuAccessible(roles, value): boolean {
-    let accessible = roles ? false : true;
     if (roles && value.access_token) {
       let token: any = atob(value.access_token.split('.', 3)[1]);
       token = JSON.parse(token);
       for (const role of roles) {
         const matchedRole = token.authorities.filter(auth => auth === role);
         if (matchedRole !== undefined && matchedRole !== null && matchedRole.toString().replace(/ /g, '') !== '') {
-          accessible = true;
+          return true;
         }
       }
     }
-    return accessible;
+    return roles ? false : true;
   }
 }

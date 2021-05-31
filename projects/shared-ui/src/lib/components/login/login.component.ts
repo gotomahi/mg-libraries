@@ -15,8 +15,6 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  @Output()
-  loginEvent = new EventEmitter<any>();
   hide = true;
   loginForm: FormGroup;
 
@@ -37,7 +35,6 @@ export class LoginComponent implements OnInit {
             if ( result.access_token ) {
               this.dataShareService.token.next(result);
               this.dataShareService.isUserLoggedIn.next(true);
-              this.loginEvent.emit({success: true});
             } else {
               this.loginForm.setErrors({serverError: 'Token is not valid'});
             }
